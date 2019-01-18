@@ -110,7 +110,11 @@ class GameState extends State<Game> {
   void _regenerateValues() {
     firstDiceValue = _generateValue();
     secondDiceValue = _generateValue();
-    currentBackgroundColor = _generateColor();
+    Color nextColor = _generateColor();
+    while (nextColor == currentBackgroundColor) {
+      nextColor = _generateColor();
+    }
+    currentBackgroundColor = nextColor;
   }
 
   Widget _buildDices(BuildContext context) {
