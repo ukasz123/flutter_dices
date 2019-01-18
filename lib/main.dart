@@ -74,22 +74,26 @@ class GameState extends State<Game> {
                       numberOfDices = numberOfDices == 2 ? 1 : 2;
                     });
                   },
-                  child: Container(
+                  child: AnimatedContainer(
+                    duration: animationDuration,
                     decoration: ShapeDecoration(
                         shape: CircleBorder(
                             side: BorderSide(color: Colors.white, width: 4)),
                         color: numberOfDices == 2
                             ? Colors.white
-                            : Colors.transparent),
+                            : currentBackgroundColor),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "2x",
+                      child: AnimatedDefaultTextStyle(
+                        duration: animationDuration,
                         style: theme.textTheme.display1.copyWith(
                             fontSize: 32,
                             color: numberOfDices == 2
                                 ? currentBackgroundColor
                                 : Colors.white),
+                        child: Text(
+                          "2x",
+                        ),
                       ),
                     ),
                   ),
